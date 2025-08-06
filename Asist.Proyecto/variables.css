@@ -1,0 +1,17 @@
+:root {
+  /* Colores institucionales */
+  --color-primario: #3a76d0;
+  --color-primario-hover: #2c60a4;
+  --color-fondo: #eef3fc;
+  --color-blanco: #ffffff;
+  --color-texto: #2c3e50;
+  --color-sombra: rgba(0, 0, 0, 0.1);
+
+  /* Tipografía */
+  --fuente-principal:'Montserrat', 'Segoe UI', sans-serif;
+;
+
+  /* Espaciado */
+  --espaciado: 16px;
+  --radio-borde: 8px;
+}
