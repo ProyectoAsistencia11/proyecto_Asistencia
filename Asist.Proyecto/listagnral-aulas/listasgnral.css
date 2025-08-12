@@ -1,0 +1,85 @@
+.body {
+  font-family: sans-serif;
+  padding: 20px;
+  width: 100%;
+}
+/* ENCABEZADO */
+.Encabezado {
+  margin-bottom: 100px;
+  width: 100%;
+  padding: 16px 24px;
+  background-color: var(--color-blanco);
+  box-shadow: 0 2px 6px var(--color-sombra);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-texto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-texto img {
+  height: 48px;
+}
+
+.Texto_lateral {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--color-texto);
+}
+
+/* Estilo general de la tabla */
+#tabla-alumnos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Encabezado de la tabla */
+#tabla-alumnos thead {
+  background: none;
+  color: black;
+}
+
+#tabla-alumnos th {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 2px solid #00336611;
+}
+
+/* Filas de datos */
+#tabla-alumnos td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Alternancia de colores en filas */
+#tabla-alumnos tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#tabla-alumnos tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Botón de borrar */
+#tabla-alumnos button {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#tabla-alumnos button:hover {
+  background-color: #c9302c;
+}
