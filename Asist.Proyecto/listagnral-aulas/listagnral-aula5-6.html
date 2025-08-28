@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Asistencia</title>        
+        <link rel="icon" type="image/x-icon" href="Icon/Logo.ico">
+        <link rel="stylesheet" href="../variables.css">
+        <link rel="stylesheet" href="../estilos-comunes.css">
+        <link rel="stylesheet" href="listasgnral.css">
+    </head>
+    <header class="Encabezado">
+        <div class="logo-texto">
+        <img src="../Icon/Logo.png" alt="Logo Centro Familiar Amigos de Jesús">
+        <span class="Texto_lateral">Centro Familiar Amigo de Jesús</span>
+        </div>
+    </header>
+
+    <!--volver hacia atras-->
+    <button class="btn-volver" onclick="window.history.back()" aria-label="Volver atrás">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 6L9 12L15 18" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+    
+    <body>
+        <h1 class="titulo2">Gestión del aula 5-6</h1>
+
+        <table id="tabla-alumnos">
+        <thead>
+            <tr>
+            <th>Alumnos</th>
+            <th>Padre/Madre o Tutor</th>
+            <th>Teléfono</th>
+            <th>Acción</th> <!-- Reemplaza "Aula" por el botón -->
+            </tr>
+        </thead>
+        <tbody></tbody>
+        </table>
+
+        <div id="lista-alumnos"></div>
+
+        <script src="listagral.js"></script>
+        <script src="../script-comun.js"></script>
+    </body>
+</html>
