@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Aulas</title>
+    <link rel="icon" href="../Icon/Logo.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> <!--letra .titulo-->
+    <link rel="stylesheet" href="../variables.css">
+    <link rel="stylesheet" href="../estilos-comunes.css">
+    <link rel="stylesheet" href="Inicio.css"> 
+    <link rel="stylesheet" href="formulario.css">
+  </head>
+
+  <body>
+         <!-- Encabezado con logo, texto, y título -->
+        <header class="Encabezado">
+          <div class="logo-texto">
+            <img src="../Icon/Logo.png" alt="Logo Centro Familiar Amigos de Jesús">
+            <span class="Texto_lateral">Centro Familiar Amigo de Jesús</span>
+          </div>
+        </header>
+        <!-- Botón de menú hamburguesa -->
+      <button id="menu-toggle" class="menu-hamburguesa">☰</button>
+      <div class="cerrar-sesion" id="cerrar-sesion" onclick="mostrarModalCerrarSesion()">
+        <img src="../Icon/cerrar.png" alt="Cerrar Sesión">
+      </div>
+      
+    
+
+      
+        <!-- Aulas organizadas por columnas -->
+        <div class="general">
+          <h1 class="titulo">Bienvenido al Sistema de Asistencia</h1>
+          <div id="menu-aulas" class="menu-lateral">
+            <h1 class="mensaje">Seleccione el aula:</h1><br>
+            <button onclick="direAula1y2()" class="Aulas_boton" name="1-2">Aula 1-2</button>
+            <button onclick="direAula3y4()" class="Aulas_boton"  name="3-4">Aula 3-4</button>
+            <button onclick="direAula5y6()"class="Aulas_boton" name="5-6">Aula 5-6</button>
+            <button onclick="direAula7y8()"class="Aulas_boton" name="7-8">Aula 7-8</button>
+            <button onclick="direAula9y12()"class="Aulas_boton" name="9-12">Aula 9-12</button>
+            <button onclick="direAuladelaCalma()"class="Aulas_boton" name="Aula">Aula de la calma</button>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="general_botones">
+          <button class="Agregar_boton" onclick="mostrarFormulario()">+ Agregar Nuevo Alumno</button>
+          <button class="Escanear_boton">Escanear QR</button>
+        </div>    
+        
+    <div id="modal" class="modal-overlay" style="display: none;">
+      <form id="miFormulario">
+        <div class="campo">
+          <label>Nombre del Alumno:</label>
+          <input type="text" name="nombre" />
+        </div>
+        <div class="campo">
+          <label>Nombre del madre/padre o tutor:</label>
+          <input type="text" name="nombretutor" />
+        </div>
+        <div class="campo">
+          <label>Teléfono:</label>
+          <input type="number" name="telefono" />
+        </div>
+        <div class="campo">
+          <label for="aula">Seleccionar aula:</label>
+          <select id="aula" name="aula">
+            <option value="1-2">Aula 1-2</option>
+            <option value="3-4">Aula 3-4</option>
+            <option value="5-6">Aula 5-6</option>
+            <option value="7-8">Aula 7-8</option>
+            <option value="9-12">Aula 9-12</option>
+            <option value="calma">Aula de la calma</option>
+          </select>
+        </div>
+        
+        <button class="Botones" type="button" onclick="listaPrincipal()">Guardar</button>
+        <button class="Botones" type="button" onclick="mostrarModelo()">modelo</button>
+        <div id="qr-container" style="margin-top: 20px;"></div>
+        <button class="Botones" type="button" onclick="cerrarformulario()">Cerrar</button>
+      </form>
+    </div>
+
+  
+    <!--modelo de imprecion-->
+    <div id="ficha-modelo" style="display:none;">
+      <div class="tarjeta">
+        <!-- Encabezado institucional -->
+        <div class="encabezado-tarjeta">
+          <img src="../Icon/Logo.png" alt="Logo" class="logo-tarjeta">
+          <h2 class="titulo-centro">Centro Familiar Amigo de Jesús</h2>
+          <h3 id="nombre-alumno"></h3>
+        </div>
+
+        <!-- Frente de la tarjeta -->
+      <div class="tarjeta-frente">
+        <div class="fila-frente">
+          <div class="foto-alumno">
+            <input class="acciones-ficha" type="file" id="foto-input" accept="image/*" onchange="cargarFoto(event)">
+            <img id="foto-preview" src="../assets/default-foto.png" alt="Foto del alumno">
+          </div>
+          <div class="datos-alumno">
+            <p><strong>Tutor:</strong> <span id="tutor-alumno"></span></p>
+            <p><strong>Teléfono:</strong> <span id="telefono-alumno"></span></p>
+            <p><strong>Aula:</strong> <span id="aula-alumno"></span></p>
+          </div>
+        </div>
+      </div>
+
+
+        <!-- Dorso de la tarjeta -->
+        <div class="tarjeta-dorso">
+          <div class="qr-wrapper">
+            <div id="qr-alumno" class="qr-code"></div>
+          </div>
+        </div>
+
+        <!-- Botones de acción (ocultos al imprimir) -->
+        <div class="acciones-ficha">
+          <button class="Botones" type="button" onclick="imprimirFicha()">Imprimir</button>
+          <button class="Botones" type="button" onclick="guardarFicha()">Guardar</button>
+          <button class="Botones" type="button" onclick="cerrarFicha()">Cerrar</button>
+        </div>
+      </div>
+   </div>
+   
+
+    <div id="modalCerrarSesion" class="modal-overlay" style="display: none;">
+      <div class="modal-contenido">
+        <p>¿Desea cerrar sesión?</p>
+        <button class="Botones" onclick="cerrarSesion()">Confirmar</button>
+        <button class="Botones" onclick="cerrarModal()">Cancelar</button>
+      </div>
+    </div>
+
+    <script src="agregar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script src="inicio.js"></script>
+    <script src="cierreSecion.js"> </script>
+  </body>
+</html>
+
